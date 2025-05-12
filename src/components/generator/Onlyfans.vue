@@ -60,8 +60,11 @@
 
     <div class="download-share">
       <ExportBtn />
-      <v-btn @click="twitter" color="#1da1f2"
-        ><v-icon icon="mdi-twitter" class="mr-0.5"></v-icon> Tweet</v-btn
+      <v-btn @click="openLazyBook" color="#1da1f2"
+        ><v-icon icon="mdi-twitter" class="mr-0.5"></v-icon> 懒人手册</v-btn
+      >
+      <v-btn @click="goBack" color="#f90"
+        ><v-icon icon="mdi-arrow-left" class="mr-0.5"></v-icon> 返回</v-btn
       >
     </div>
   </div>
@@ -95,10 +98,12 @@ const updateSuffix = (e) => {
   }
 };
 
-const twitter = () => {
-  let url = 'https://logoly.pro';
-  let text = encodeURIComponent(`Built with #LogolyPro, by @xiqingongzi ${url}`);
-  window.open(`https://twitter.com/intent/tweet?text=${text}`);
+const openLazyBook = () => {
+  window.open('https://lazybook.fun');
+};
+
+const goBack = () => {
+  window.history.back();
 };
 
 const transparentBgColor = computed(() => {

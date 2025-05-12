@@ -9,8 +9,8 @@
       <a class="github" href="https://github.com/bestony"
         ><i class="iconfont icon-github"></i> GitHub</a
       >
-      <a class="twitter" href="https://twitter.com/xiqingongzi"
-        ><i class="iconfont icon-twitter"></i> Twitter</a
+      <a class="twitter" href="https://lazybook.fun"
+        ><i class="iconfont icon-twitter"></i> 懒人手册</a
       >
       <a class="gmail" href="mailto:xiqingongzi+logoly@gmail.com"
         ><i class="iconfont icon-gmail"></i> Email</a

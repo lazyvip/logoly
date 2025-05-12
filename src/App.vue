@@ -1,6 +1,5 @@
 <template>
   <div id="app" class="container mx-auto py-12 px-6 max-w-[893px]">
-    <Ribbon class="z-50"></Ribbon>
     <div class="text-4xl font-black p-5 my-6 text-center">
       <logo></logo>
     </div>
@@ -24,23 +23,13 @@
           <span class="text-white">Only</span>
           <span class="text-[#00AFF0]">Fans</span>
         </router-link>
-        <span class="text-[#777] font-light">More coming soon...</span>
       </div>
     </div>
     <router-view />
-    <Slogan />
-    <Faq />
-    <Author />
-    <Copyright class="pb-4" />
   </div>
 </template>
 
 <script setup>
 import Logo from '@/components/Logo.vue';
 import Description from '@/components/Description.vue';
-import Slogan from '@/components/Slogan.vue';
-import Faq from '@/components/Faq.vue';
-import Author from '@/components/Author.vue';
-import Ribbon from '@/components/Ribbon.vue';
-import Copyright from '@/components/Copyright.vue';
 </script>
