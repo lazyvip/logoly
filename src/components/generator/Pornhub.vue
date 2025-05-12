@@ -15,6 +15,8 @@
             <template v-if="!reverseHighlight">
               <span
                 @input="updatePrefix"
+                @compositionstart="handleCompositionStart"
+                @compositionend="handleCompositionEnd"
                 class="prefix"
                 :style="{ color: prefixColor }"
                 :contenteditable="store.editable"
@@ -29,6 +31,8 @@
                 :style="{ color: suffixColor, 'background-color': postfixBgColor }"
                 :contenteditable="store.editable"
                 @input="updateSuffix"
+                @compositionstart="handleCompositionStart"
+                @compositionend="handleCompositionEnd"
                 spellcheck="false"
                 >{{ store.suffix }}</span
               >
@@ -149,19 +153,34 @@ const postfixBgColor = ref('#ff9900');
 const fontSize = ref(60);
 const transparentBg = ref(false);
 const reverseHighlight = ref(false);
+const isComposing = ref(false);
 
 const store = useStore();
 
-const updatePrefix = (e) => {
-  if (!navigator.userAgent.toLowerCase().includes('firefox')) {
-    store.updatePrefix(e.target.childNodes[0].nodeValue);
+const handleCompositionStart = () => {
+  isComposing.value = true;
+};
+
+const handleCompositionEnd = (e) => {
+  isComposing.value = false;
+  const text = e.target.innerHTML.trim();
+  if (e.target.classList.contains('prefix')) {
+    store.updatePrefix(text);
+  } else if (e.target.classList.contains('postfix')) {
+    store.updateSuffix(text);
   }
 };
 
+const updatePrefix = (e) => {
+  if (isComposing.value) return;
+  const text = e.target.innerHTML.trim();
+  store.updatePrefix(text);
+};
+
 const updateSuffix = (e) => {
-  if (!navigator.userAgent.toLowerCase().includes('firefox')) {
-    store.updateSuffix(e.target.childNodes[0].nodeValue);
-  }
+  if (isComposing.value) return;
+  const text = e.target.innerHTML.trim();
+  store.updateSuffix(text);
 };
 
 const openLazyBook = () => {
