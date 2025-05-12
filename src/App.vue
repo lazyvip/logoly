@@ -8,9 +8,11 @@
     </div>
     <div id="nav">
       <div
-        class="flex flex-col md:flex-row gap-2 md:gap-16 text-xl font-semibold items-center mb-12 justify-center"
+        class="flex flex-col md:flex-row gap-2 md:gap-16 text-xl font-semibold items-center mb-12 justify-center relative"
       >
-        <router-link to="/about">About</router-link>
+        <a href="javascript:window.history.back()" class="text-gray-300 hover:text-white cursor-pointer absolute left-0">
+          ← 返回
+        </a>
         <router-link to="/" class="pb">
           <span class="prefix">Porn</span>
           <span class="postfix">hub</span>
@@ -26,10 +28,17 @@
       </div>
     </div>
     <router-view />
+    <footer class="text-center mt-8 text-gray-400 text-sm">
+      <p>© 2025 lazytool made by 公众号@懒人搜索</p>
+    </footer>
   </div>
 </template>
 
 <script setup>
 import Logo from '@/components/Logo.vue';
 import Description from '@/components/Description.vue';
+
+const goBack = () => {
+  window.history.back();
+};
 </script>
